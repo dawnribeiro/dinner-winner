@@ -1,4 +1,4 @@
-namespace dinner_winner.Models
+namespace dinner_winner.Controllers
 {
   public class Restaurant
   {

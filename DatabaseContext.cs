@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using dinner_winner.Models;
+using dinner_winner.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
