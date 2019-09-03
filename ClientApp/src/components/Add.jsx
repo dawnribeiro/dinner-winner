@@ -10,6 +10,7 @@ export default function Add() {
       console.log(resp.data)
     }, [])
     e.preventDefault()
+    e.target.reset()
   }
 
   const updateValue = e => {
