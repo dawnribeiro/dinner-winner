@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import AllRestaurants from './AllRestaurants'
 
 export default function Add() {
   const [restaurant, setRestaurant] = useState([])
@@ -44,6 +45,7 @@ export default function Add() {
         </label>
         <button>Add</button>
       </form>
+      <AllRestaurants />
     </section>
   )
 }
