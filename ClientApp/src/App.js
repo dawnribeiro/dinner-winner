@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router'
 import { Layout } from './components/Layout'
-import { Home } from './components/Home'
+import Home from './components/Home'
 import Testing from './Testing'
 import Add from './components/Add'
 
