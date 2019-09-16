@@ -22,12 +22,6 @@ namespace sdg_react_template.Controllers
     {
       _context = context;
     }
-    [HttpGet]
-    public object Get()
-    {
-      var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
-      return userId;
-    }
 
     // GET: api/Restaurant
     [HttpGet]
