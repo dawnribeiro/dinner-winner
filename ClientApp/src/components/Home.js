@@ -13,14 +13,17 @@ export default function Home() {
   }, [])
 
   const getRandom = restaurants => {
-    let random = restaurants.id
-    setRandomRestaurant([Math.ceil(Math.random() * random.length())])
+    let random = restaurants[Math.ceil(Math.random() * restaurants.length - 1)]
+    console.log(restaurants.length)
+    console.log(random)
+    setRandomRestaurant(random)
   }
 
   return (
     <section>
       <h1>Winner Winner, Chicken Dinner!!</h1>
-      <button onClick={() => getRandom(restaurants)}></button>
+      <button onClick={() => getRandom(restaurants)}>Dinner Time</button>
+      <h1>{randomRestaurant.name}</h1>
     </section>
   )
 }
