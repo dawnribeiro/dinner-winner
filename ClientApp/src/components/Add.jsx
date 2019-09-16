@@ -43,6 +43,13 @@ export default function Add() {
             onChange={e => updateValue(e)}
           />
         </label>
+        <input
+          type="text"
+          name="Type"
+          placeholder="Type"
+          onChange={e => updateValue(e)}
+        />
+        <label></label>
         <button>Add</button>
       </form>
       <AllRestaurants />
