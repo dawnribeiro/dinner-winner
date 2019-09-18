@@ -27,8 +27,9 @@ namespace sdg_react_template.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
     {
+      var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
 
-      return await _context.Restaurants.ToListAsync();
+      return await _context.Restaurants.Where(w => w.UserId == userId).ToListAsync();
     }
 
     // GET: api/Restaurant/5
@@ -79,6 +80,8 @@ namespace sdg_react_template.Controllers
     [HttpPost]
     public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
     {
+      var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
+      restaurant.UserId = userId;
       _context.Restaurants.Add(restaurant);
       await _context.SaveChangesAsync();
 
