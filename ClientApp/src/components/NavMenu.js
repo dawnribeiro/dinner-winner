@@ -10,7 +10,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './NavMenu.css'
-// import Home from './components/Home'
+import auth from '../Auth'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -29,6 +29,11 @@ export class NavMenu extends Component {
       collapsed: !this.state.collapsed
     })
   }
+  // verify() {
+  //   if (!auth.isAuthenticated()) {
+  //     window.location.href = '/'
+  //   }
+  // }
 
   render() {
     return (
@@ -38,7 +43,11 @@ export class NavMenu extends Component {
           light
         >
           <Container>
-            <NavbarBrand tag={Link} to="/home">
+            <NavbarBrand
+              // onClick={verify()}
+              tag={Link}
+              to="/home"
+            >
               Dinner Winner
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -53,11 +62,11 @@ export class NavMenu extends Component {
                     New Restaurant
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/login">
                     Login
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/logout">
                     Logout

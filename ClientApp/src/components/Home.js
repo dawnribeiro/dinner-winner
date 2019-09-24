@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import auth from '../Auth'
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([])
@@ -13,10 +14,15 @@ export default function Home() {
   }, [])
 
   const getRandom = restaurants => {
-    let random = restaurants[Math.ceil(Math.random() * restaurants.length - 1)]
-    console.log(restaurants.length)
-    console.log(random)
-    setRandomRestaurant(random)
+    if (!auth.isAuthenticated()) {
+      window.location.href = '/'
+    } else {
+      let random =
+        restaurants[Math.ceil(Math.random() * restaurants.length - 1)]
+      console.log(restaurants.length)
+      console.log(random)
+      setRandomRestaurant(random)
+    }
   }
 
   return (
