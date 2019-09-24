@@ -6,6 +6,7 @@ import Testing from './Testing'
 import Add from './components/Add'
 import auth from './Auth'
 import axios from 'axios'
+import Login from './components/Login'
 
 export default class App extends Component {
   static displayName = App.name
@@ -43,9 +44,10 @@ export default class App extends Component {
             return <p />
           }}
         />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Login} />
         <Route path="/add" component={Add} />
         <Route path="/hello" component={Testing} />
+        <Route path="/home" component={Home} />
       </Layout>
     )
   }

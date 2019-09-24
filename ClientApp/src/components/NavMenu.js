@@ -10,6 +10,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './NavMenu.css'
+// import Home from './components/Home'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -37,7 +38,7 @@ export class NavMenu extends Component {
           light
         >
           <Container>
-            <NavbarBrand tag={Link} to="/">
+            <NavbarBrand tag={Link} to="/home">
               Dinner Winner
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -58,12 +59,7 @@ export class NavMenu extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink
-                    tag={Link}
-                    className="text-dark"
-                    to="/logout"
-                    refresh="true"
-                  >
+                  <NavLink tag={Link} className="text-dark" to="/logout">
                     Logout
                   </NavLink>
                 </NavItem>

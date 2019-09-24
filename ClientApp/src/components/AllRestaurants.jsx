@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import auth from '../Auth'
 
 export default function AllRestaurants() {
   const [restaurants, setRestaurants] = useState([])
 
   useEffect(() => {
-    axios.get('api/restaurant').then(resp => {
-      setRestaurants(resp.data)
-      console.log(resp.data)
-    })
+    if (!auth.isAuthenticated()) {
+      window.location.href = '/'
+    } else {
+      axios.get('api/restaurant').then(resp => {
+        setRestaurants(resp.data)
+        console.log(resp.data)
+      })
+    }
   }, [])
 
   const deleteRestaurant = r => {
