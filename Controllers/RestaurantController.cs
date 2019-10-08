@@ -28,8 +28,13 @@ namespace sdg_react_template.Controllers
     public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
     {
       var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
-
-      return await _context.Restaurants.Where(w => w.UserId == userId).ToListAsync();
+      var all = await _context.Restaurants.Where(w => w.UserId == userId).ToListAsync();
+      //   if (all == null)
+      //   {
+      //     return NoContent();
+      //     // new string[0];
+      //   }
+      return all;
     }
 
     // GET: api/Restaurant/5

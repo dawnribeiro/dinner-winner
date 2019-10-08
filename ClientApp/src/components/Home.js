@@ -5,13 +5,17 @@ import auth from '../Auth'
 export default function Home() {
   const [restaurants, setRestaurants] = useState([])
   const [randomRestaurant, setRandomRestaurant] = useState([])
+  const [error, setError] = useState()
 
+  
   useEffect(
     () => {
-      axios.get('api/restaurant').then(resp => {
+      setError(undefined)
+      try {axios.get('api/restaurant').then(resp => {
         console.log(resp.data)
         setRestaurants(resp.data)
-      })
+      })}
+
     },
     error => {
       if (error) {
