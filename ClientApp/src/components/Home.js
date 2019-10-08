@@ -5,24 +5,14 @@ import auth from '../Auth'
 export default function Home() {
   const [restaurants, setRestaurants] = useState([])
   const [randomRestaurant, setRandomRestaurant] = useState([])
-  const [error, setError] = useState()
+  const [state, setState] = useState({})
 
-  
-  useEffect(
-    () => {
-      setError(undefined)
-      try {axios.get('api/restaurant').then(resp => {
-        console.log(resp.data)
-        setRestaurants(resp.data)
-      })}
-
-    },
-    error => {
-      if (error) {
-        return error
-      }
-    }
-  )
+  useEffect(() => {
+    axios.get('api/restaurant').then(resp => {
+      console.log(resp.data)
+      setRestaurants(resp.data)
+    })
+  }, [])
 
   const getRandom = restaurants => {
     if (!auth.isAuthenticated()) {
@@ -32,7 +22,9 @@ export default function Home() {
         restaurants[Math.ceil(Math.random() * restaurants.length - 1)]
       console.log(restaurants.length)
       console.log(random)
-      setRandomRestaurant(random)
+      if (restaurants.length === 0) {
+        window.location.href = '/add'
+      } else setRandomRestaurant(random)
     }
   }
 
