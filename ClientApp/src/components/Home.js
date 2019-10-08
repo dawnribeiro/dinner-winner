@@ -5,7 +5,6 @@ import auth from '../Auth'
 export default function Home() {
   const [restaurants, setRestaurants] = useState([])
   const [randomRestaurant, setRandomRestaurant] = useState([])
-  const [state, setState] = useState({})
 
   useEffect(() => {
     axios.get('api/restaurant').then(resp => {
