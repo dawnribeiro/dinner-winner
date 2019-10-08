@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+}
+body {
+  background: powderblue;
+  align-content: center;
+}
+#root {
+  align-items: center;
+}
+
+.login-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 35%;
+  background-color: rgb(219, 237, 240);
+  padding: 32px;
+  border-radius: 5%;
+  align-content: center;
+  margin-top: 200px;
+}
+.login {
+  text-align: center;
+}
+.login-btn {
+}
+.container {
+  justify-content: center;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  .login-section {
+    width: 65%;
+    margin-top: 100px;
+  }
+}

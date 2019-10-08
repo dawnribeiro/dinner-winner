@@ -10,7 +10,6 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './NavMenu.css'
-import auth from '../Auth'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -29,11 +28,6 @@ export class NavMenu extends Component {
       collapsed: !this.state.collapsed
     })
   }
-  // verify() {
-  //   if (!auth.isAuthenticated()) {
-  //     window.location.href = '/'
-  //   }
-  // }
 
   render() {
     return (

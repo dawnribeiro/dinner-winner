@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import history from './History'
+import './index.css'
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')
 const rootElement = document.getElementById('root')
