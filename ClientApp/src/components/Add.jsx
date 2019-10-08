@@ -30,6 +30,7 @@ export default function Add() {
         <label>
           <input
             type="text"
+            required
             name="name"
             placeholder="Name"
             onChange={e => updateValue(e)}
@@ -38,6 +39,7 @@ export default function Add() {
         <label>
           <input
             type="text"
+            required
             name="location"
             placeholder="Location"
             onChange={e => updateValue(e)}
@@ -45,6 +47,7 @@ export default function Add() {
         </label>
         <input
           type="text"
+          required
           name="Type"
           placeholder="Type"
           onChange={e => updateValue(e)}

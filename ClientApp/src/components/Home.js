@@ -6,12 +6,19 @@ export default function Home() {
   const [restaurants, setRestaurants] = useState([])
   const [randomRestaurant, setRandomRestaurant] = useState([])
 
-  useEffect(() => {
-    axios.get('api/restaurant').then(resp => {
-      console.log(resp.data)
-      setRestaurants(resp.data)
-    })
-  }, [])
+  useEffect(
+    () => {
+      axios.get('api/restaurant').then(resp => {
+        console.log(resp.data)
+        setRestaurants(resp.data)
+      })
+    },
+    error => {
+      if (error) {
+        return error
+      }
+    }
+  )
 
   const getRandom = restaurants => {
     if (!auth.isAuthenticated()) {
