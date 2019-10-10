@@ -1,8 +1,4 @@
-dotnet publish -c Release 
-
-cp dockerfile ./bin/release/netcoreapp2.2/publish
-
-docker build -t dinner-winner-image ./bin/release/netcoreapp2.2/publish
+docker build -t dinner-winner-image .
 
 docker tag dinner-winner-image registry.heroku.com/dinner-winner/web
 
