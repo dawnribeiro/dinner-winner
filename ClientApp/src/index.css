@@ -32,8 +32,16 @@ body {
 .restaurants {
   display: flex;
   flex-wrap: wrap;
-  width: 200px;
+  width: 300px;
   flex-direction: column;
+  margin: 50px;
+}
+.restaurants-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-container {
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

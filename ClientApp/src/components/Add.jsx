@@ -46,38 +46,40 @@ export default function Add() {
 
   return (
     <section>
-      <h1>Add a new restaurant</h1>
-      <form onSubmit={createRestaurant}>
-        <label>
+      <div className="form-container">
+        <h1>Add a new restaurant</h1>
+        <form onSubmit={createRestaurant}>
+          <label>
+            <input
+              type="text"
+              required
+              name="name"
+              placeholder="Name"
+              onChange={e => updateValue(e)}
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              required
+              name="location"
+              placeholder="Location"
+              onChange={e => updateValue(e)}
+            />
+          </label>
           <input
             type="text"
             required
-            name="name"
-            placeholder="Name"
+            name="Type"
+            placeholder="Type"
             onChange={e => updateValue(e)}
           />
-        </label>
-        <label>
-          <input
-            type="text"
-            required
-            name="location"
-            placeholder="Location"
-            onChange={e => updateValue(e)}
-          />
-        </label>
-        <input
-          type="text"
-          required
-          name="Type"
-          placeholder="Type"
-          onChange={e => updateValue(e)}
-        />
-        <label></label>
-        <button>Add</button>
-      </form>
+          <label></label>
+          <button>Add</button>
+        </form>
+      </div>
       {/* <AllRestaurants /> */}
-      <ul>
+      <ul className="restaurants-container">
         {restaurants.map(r => {
           return (
             <li key={r.id} className="restaurants">
