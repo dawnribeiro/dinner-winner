@@ -28,10 +28,12 @@ export default function Home() {
   }
 
   return (
-    <section>
+    <section className="home-container">
       <h1>Winner Winner, Chicken Dinner!!</h1>
-      <button onClick={() => getRandom(restaurants)}>Dinner Time</button>
-      <h1>{randomRestaurant.name}</h1>
+      <button className="random-btn" onClick={() => getRandom(restaurants)}>
+        Dinner Time
+      </button>
+      <h2>{randomRestaurant.name}</h2>
     </section>
   )
 }

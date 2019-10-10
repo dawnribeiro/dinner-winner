@@ -45,7 +45,7 @@ export default function Add() {
   }
 
   return (
-    <section>
+    <section className="add-container">
       <div className="form-container">
         <h1>Add a new restaurant</h1>
         <form onSubmit={createRestaurant}>
