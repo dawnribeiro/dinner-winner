@@ -80,7 +80,7 @@ export default function Add() {
       <ul>
         {restaurants.map(r => {
           return (
-            <li key={r.id}>
+            <li key={r.id} className="restaurants">
               <h3>{r.name}</h3>
               <p>{r.location}</p>
               <button onClick={() => deleteRestaurant(r)}>Delete</button>

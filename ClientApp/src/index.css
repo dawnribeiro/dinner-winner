@@ -29,6 +29,12 @@ body {
   justify-content: center;
   display: flex;
 }
+.restaurants {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  flex-direction: column;
+}
 
 @media (max-width: 768px) {
   html {
@@ -37,5 +43,10 @@ body {
   .login-section {
     width: 65%;
     margin-top: 100px;
+  }
+  .restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
   }
 }
