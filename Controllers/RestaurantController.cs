@@ -37,6 +37,13 @@ namespace sdg_react_template.Controllers
       return all;
     }
 
+    [HttpGet("locations")]
+    public async Task<ActionResult<List<string>>> GetDistinctLocations()
+    {
+      var locationNames = _context.Restaurants.Select(s => s.Name).Distinct();
+      return await locationNames.ToListAsync();
+    }
+
     // GET: api/Restaurant/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Restaurant>> GetRestaurant(int id)

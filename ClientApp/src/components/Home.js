@@ -12,6 +12,10 @@ export default function Home() {
       console.log(resp.data)
       setRestaurants(resp.data)
     })
+    axios.get('api/restaurant/locations').then(resp => {
+      console.log(resp.data)
+      setLocations(resp.data)
+    })
   }, [])
 
   const getRandom = restaurants => {
@@ -28,6 +32,13 @@ export default function Home() {
     }
   }
 
+  // const getLocations = locations => {
+  //   if (!auth.isAuthenticated()) {
+  //     window.location.href = '/'
+  //   } else {
+  //   }
+  // }
+
   return (
     <section className="home-container">
       <h1>Winner Winner, Chicken Dinner!!</h1>
@@ -36,14 +47,23 @@ export default function Home() {
           All
         </button>
         <div className="dropdown">
-          <button className="dropbtn" onClick={() => getLocations(locations)}>
+          <button
+            className="dropbtn"
+            // onClick={() => getLocations(locations)}
+          >
             Location
           </button>
           <div className="dropdown-content">
             <ul className="btn-list">
-              <li>
-                <button>1</button>
-              </li>
+              {restaurants.map(restaurant => {
+                return (
+                  <li key={restaurant.id}>
+                    <button>
+                      <p>{restaurant.location}</p>
+                    </button>
+                  </li>
+                )
+              })}
             </ul>
             {/* <a href="#">Link 1</a>
             <a href="#">Link 2</a>
