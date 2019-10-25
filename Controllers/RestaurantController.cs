@@ -40,8 +40,18 @@ namespace sdg_react_template.Controllers
     [HttpGet("locations")]
     public async Task<ActionResult<List<string>>> GetDistinctLocations()
     {
-      var locationNames = _context.Restaurants.Select(s => s.Name).Distinct();
-      return await locationNames.ToListAsync();
+      var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
+      var locationNames = await _context.Restaurants.Where(w => w.UserId == userId).Select(s => s.Location).Distinct().ToListAsync();
+
+      return locationNames;
+    }
+    [HttpGet("types")]
+    public async Task<ActionResult<List<string>>> GetDistinctTypes()
+    {
+      var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
+      var typesNames = await _context.Restaurants.Where(w => w.UserId == userId).Select(s => s.Type).Distinct().ToListAsync();
+
+      return typesNames;
     }
 
     // GET: api/Restaurant/5

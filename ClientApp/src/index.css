@@ -94,7 +94,7 @@ body {
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:active .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: block;
 }
 

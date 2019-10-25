@@ -5,7 +5,11 @@ import auth from '../Auth'
 export default function Home() {
   const [restaurants, setRestaurants] = useState([])
   const [randomRestaurant, setRandomRestaurant] = useState([])
+  const [randomLocation, setRandomLocation] = useState([])
+  const [randomType, setRandomType] = useState([])
+
   const [locations, setLocations] = useState([])
+  const [types, setTypes] = useState([])
 
   useEffect(() => {
     axios.get('api/restaurant').then(resp => {
@@ -15,6 +19,10 @@ export default function Home() {
     axios.get('api/restaurant/locations').then(resp => {
       console.log(resp.data)
       setLocations(resp.data)
+    })
+    axios.get('api/restaurant/types').then(resp => {
+      console.log(resp.data)
+      setTypes(resp.data)
     })
   }, [])
 
@@ -47,40 +55,35 @@ export default function Home() {
           All
         </button>
         <div className="dropdown">
-          <button
-            className="dropbtn"
-            // onClick={() => getLocations(locations)}
-          >
-            Location
-          </button>
+          <button className="dropbtn">Location</button>
           <div className="dropdown-content">
             <ul className="btn-list">
-              {restaurants.map(restaurant => {
+              {locations.map(location => {
                 return (
-                  <li key={restaurant.id}>
+                  <li key={location.id}>
                     <button>
-                      <p>{restaurant.location}</p>
+                      <p>{location}</p>
                     </button>
                   </li>
                 )
               })}
             </ul>
-            {/* <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a> */}
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Type</button>
           <div className="dropdown-content">
             <ul className="btn-list">
-              <li>
-                <button>1</button>
-              </li>
+              {types.map(type => {
+                return (
+                  <li key={type.id}>
+                    <button>
+                      <p>{type}</p>
+                    </button>
+                  </li>
+                )
+              })}
             </ul>
-            {/* <a href="#">Link 4</a>
-            <a href="#">Link 5</a>
-            <a href="#">Link 6</a> */}
           </div>
         </div>
       </div>
