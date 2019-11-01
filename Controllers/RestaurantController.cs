@@ -29,15 +29,20 @@ namespace sdg_react_template.Controllers
     {
       var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
       var all = await _context.Restaurants.Where(w => w.UserId == userId).ToListAsync();
-      //   if (all == null)
-      //   {
-      //     return NoContent();
-      //     // new string[0];
-      //   }
+
       return all;
+
+    }
+    [HttpGet("{location}")]
+    public async Task<ActionResult<List<string>>> GetLocations()
+    {
+      var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
+      var locations = await _context.Restaurants.Where(w => w.UserId == userId).Select(s => s.Location).ToListAsync();
+
+      return locations;
     }
 
-    [HttpGet("locations")]
+    [HttpGet("distinctLocations")]
     public async Task<ActionResult<List<string>>> GetDistinctLocations()
     {
       var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
@@ -45,7 +50,8 @@ namespace sdg_react_template.Controllers
 
       return locationNames;
     }
-    [HttpGet("types")]
+
+    [HttpGet("distinctTypes")]
     public async Task<ActionResult<List<string>>> GetDistinctTypes()
     {
       var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
