@@ -50,6 +50,7 @@ body {
 .add-container {
   justify-content: center;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 .home-container {
