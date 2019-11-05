@@ -6,24 +6,24 @@ export default function Home() {
   const [restaurants, setRestaurants] = useState([])
   const [randomRestaurant, setRandomRestaurant] = useState([])
   const [randomLocation, setRandomLocation] = useState([])
-  // const [randomType, setRandomType] = useState([])
-  // const [distinctLocations, setDistinctLocations] = useState([])
-  // const [distinctTypes, setDistinctTypes] = useState([])
-  // const [locations, setLocations] = useState([])
+  const [randomType, setRandomType] = useState([])
+  const [distinctLocations, setDistinctLocations] = useState([])
+  const [distinctTypes, setDistinctTypes] = useState([])
+  const [location, setLocation] = useState([])
 
   useEffect(() => {
     axios.get('api/restaurant').then(resp => {
       console.log(resp.data)
       setRestaurants(resp.data)
     })
-    // axios.get('api/restaurant/distinctLocations').then(resp => {
-    //   console.log(resp.data)
-    //   setDistinctLocations(resp.data)
-    // })
-    // axios.get('api/restaurant/distinctTypes').then(resp => {
-    //   console.log(resp.data)
-    //   setDistinctTypes(resp.data)
-    // })
+    axios.get('api/restaurant/distinctLocations').then(resp => {
+      console.log(resp.data)
+      setDistinctLocations(resp.data)
+    })
+    axios.get('api/restaurant/distinctTypes').then(resp => {
+      console.log(resp.data)
+      setDistinctTypes(resp.data)
+    })
   }, [])
 
   const getRandomRestaurant = restaurants => {
@@ -40,18 +40,18 @@ export default function Home() {
     }
   }
 
-  // const getRandomLocations = location => {
-  //   axios.get(`api/restaurant/${location}'`).then(resp => {
-  //     console.log(resp.data)
-  //     setLocations(resp.data)
-  //   })
-  //   //   if (!auth.isAuthenticated()) {
-  //   //     window.location.href = '/'
-  //   //   } else {
+  const getRandomLocations = location => {
+    axios.get(`api/restaurant/location/${location}`).then(resp => {
+      console.log(resp.data)
+      setLocations(resp.data)
+    })
+    //   //   if (!auth.isAuthenticated()) {
+    //   //     window.location.href = '/'
+    //   //   } else {
 
-  //   // }
-  //   //   }
-  // }
+    //   // }
+    //   //   }
+  }
   // let random =
   //       location[Math.ceil(Math.random() * location.length - 1)]
   //     console.log(location.length)
@@ -70,14 +70,14 @@ export default function Home() {
         >
           Dinner Time
         </button>
-        {/* <div className="dropdown">
+        <div className="dropdown">
           <button className="dropbtn">Location</button>
           <div className="dropdown-content">
             <ul className="btn-list">
               {distinctLocations.map(location => {
                 return (
                   <li key={location}>
-                    <button onClick={() => getRandomLocations(locations)}>
+                    <button onClick={() => getRandomLocations(location)}>
                       <p>{location}</p>
                     </button>
                   </li>
@@ -101,7 +101,7 @@ export default function Home() {
               })}
             </ul>
           </div>
-        </div> */}
+        </div>
       </div>
       <h2 className="random-restaurant">{randomRestaurant.name}</h2>
     </section>

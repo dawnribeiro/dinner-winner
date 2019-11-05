@@ -33,13 +33,13 @@ namespace sdg_react_template.Controllers
       return all;
 
     }
-    [HttpGet("{location}")]
-    public async Task<ActionResult<List<string>>> GetLocations()
+    [HttpGet("location/{location}")]
+    public async Task<ActionResult<List<Restaurant>>> GetLocationsByName([FromRoute]string Location)
     {
       var userId = User.Claims.First(f => f.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
-      var locations = await _context.Restaurants.Where(w => w.UserId == userId).Select(s => s.Location).ToListAsync();
+      var locationsName = await _context.Restaurants.Where(w => w.UserId == userId).Where(w => w.Location == Location).OrderBy(o => o.Location).ToListAsync();
 
-      return locations;
+      return locationsName;
     }
 
     [HttpGet("distinctLocations")]
