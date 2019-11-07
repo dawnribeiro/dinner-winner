@@ -9,7 +9,7 @@ export default function Home() {
   const [randomType, setRandomType] = useState([])
   const [distinctLocations, setDistinctLocations] = useState([])
   const [distinctTypes, setDistinctTypes] = useState([])
-  const [location, setLocation] = useState([])
+  const [locations, setLocations] = useState([])
 
   useEffect(() => {
     axios.get('api/restaurant').then(resp => {
@@ -45,20 +45,11 @@ export default function Home() {
       console.log(resp.data)
       setLocations(resp.data)
     })
-    //   //   if (!auth.isAuthenticated()) {
-    //   //     window.location.href = '/'
-    //   //   } else {
 
-    //   // }
-    //   //   }
+    let random = locations[Math.ceil(Math.random() * locations.length - 1)]
+    console.log(random, 'random location', locations.length, 'length')
+    return setRandomLocation(random)
   }
-  // let random =
-  //       location[Math.ceil(Math.random() * location.length - 1)]
-  //     console.log(location.length)
-  //     console.log(random)
-  //     if (location.length === 0) {
-  //       window.location.href = '/add'
-  //     } else setRandomLocation(random)
 
   return (
     <section className="home-container">
@@ -104,6 +95,7 @@ export default function Home() {
         </div>
       </div>
       <h2 className="random-restaurant">{randomRestaurant.name}</h2>
+      <h2>{randomLocation.name}</h2>
     </section>
   )
 }
